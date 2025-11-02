@@ -7,6 +7,8 @@ import time
 import warnings
 import urllib3
 import os
+from colorama import Fore, Style
+import pyfiglet
 
 warnings.filterwarnings("ignore")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -15,6 +17,17 @@ HOP_BY_HOP_HEADERS = {
     "connection", "keep-alive", "proxy-authenticate", "proxy-authorization",
     "te", "trailer", "transfer-encoding", "upgrade", "content-length", "host"
 }
+
+def show_banner():
+    banner = pyfiglet.figlet_format("Burstcraft")
+    twitter = Style.BRIGHT + Fore.CYAN + "X.com: @nexovir" + Style.RESET_ALL
+    version = Fore.LIGHTBLACK_EX + "v1.0.0" + Style.RESET_ALL
+    total_width = 20
+    twitter_centered = twitter.center(total_width)
+    version_right = version.rjust(total_width)
+    print(banner + twitter_centered + version_right + "\n")
+
+
 
 
 def read_rawfile(path):
@@ -199,4 +212,5 @@ def main():
 
 
 if __name__ == "__main__":
+    show_banner()
     main()
